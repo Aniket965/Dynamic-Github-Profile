@@ -1,5 +1,5 @@
 # Dynamic Github Profile
-> Refresh this page to see differnt Images asdf
+> Refresh this page to see differnt Images
 
 ![](https://bingimages.herokuapp.com/unsplash1)
 
