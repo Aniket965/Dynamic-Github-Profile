@@ -5,17 +5,16 @@
 
 # What?
 we can make show dynamic Images on our github profile special repository ```githubhandle/githubhandle```
-by creating a API which returns different images
+by creating an API which returns different images
 
 example: 
-> using unsplash radom images
+> using unsplash random images
 ```md
-
-![](https://source.unsplash.com/random/800x400)
+https://source.unsplash.com/random/800x400
 ``` 
 whill show a random image like this
 
-![](https://source.unsplash.com/random/800x400)
+![](https://bingimages.herokuapp.com/unsplash2)
 
 ## Ideas
 we can use this and create various different kind of profiles, some examples of that are
@@ -25,7 +24,22 @@ we can use this and create various different kind of profiles, some examples of 
 - Based on Daily Wallpapers or Quotes, you can show a daily quote on your github profile
 - Based on News that you follow
 - Based On random Thing that you like 
-    - example ```![](https://source.unsplash.com/random/800x400?star) ```
+    - example ```https://source.unsplash.com/random/800x400?star ```
 - Based on Your Latest Instagram post
+# How? 
+> for creating dynamic effect you have to host a server which returns your content
+
+Code Snippet for creating route in Express.js
+```js
+app.get("/unsplash", (req, res) => {
+  request("https://source.unsplash.com/random/800x200")
+    .on("response", response => {
+      // You can add/remove/modify headers here
+      setHeadersForCacheLength(response, 0);
+    })
+    .pipe(res);
+})
+```
+- **Note :-** set ```Cache-Control: max-age=0, no-cache, no-store, must-revalidate``` otherwise github will cache images for too long
 
 ### More Ideas? Contact Twitter - [@aniket965as](https://twitter.com/aniket965as)
