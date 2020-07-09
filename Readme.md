@@ -34,8 +34,7 @@ Code Snippet for creating route in Express.js
 app.get("/unsplash", (req, res) => {
   request("https://source.unsplash.com/random/800x200")
     .on("response", response => {
-      // You can add/remove/modify headers here
-      setHeadersForCacheLength(response, 0);
+      response.headers['Cache-Control'] = 'max-age=0, no-cache, no-store, must-revalidate'
     })
     .pipe(res);
 })
